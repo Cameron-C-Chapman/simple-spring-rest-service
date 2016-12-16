@@ -1,4 +1,4 @@
-package org.cameronchapman.github;
+package org.cameronchapman.github.webservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

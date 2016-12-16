@@ -1,4 +1,4 @@
-package org.cameronchapman.github;
+package org.cameronchapman.github.webservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
