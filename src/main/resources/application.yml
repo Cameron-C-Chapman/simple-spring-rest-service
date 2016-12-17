@@ -16,9 +16,12 @@ datasource:
 #   profiles: dev
 # server:
 #   port: 9001
+# datasource:
+#   url:mysql-db:3306
 # etc...
-
 
 # this represents a configuration block that is applied to all environments
 daoSql:
-  getAllCustomersSql: "select * from customer"
+  getAllCustomersSql: "select * from customer order by id asc"
+  getCustomerById: "select * from customer where id=:id"
+  insertCustomerSql: "insert into customer (name, address1, address2, city, state, zip, create_timestamp) values (:name, :address1, :address2, :city, :state, :zip, CURRENT_TIMESTAMP())"
