@@ -9,4 +9,5 @@ public class SimpleSpringRestServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SimpleSpringRestServiceApplication.class, args);
 	}
+
 }

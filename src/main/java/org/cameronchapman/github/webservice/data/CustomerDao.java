@@ -3,7 +3,6 @@ package org.cameronchapman.github.webservice.data;
 import org.cameronchapman.github.webservice.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -16,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-//@ConfigurationProperties(prefix="daoSql")
 public class CustomerDao {
 
     @Value("${daoSql.getAllCustomersSql}")
@@ -59,6 +57,5 @@ public class CustomerDao {
         namedParameterJdbcTemplate.update(insertCustomerSql, params, keyHolder);
         return keyHolder.getKey();
     }
-
 
 }
