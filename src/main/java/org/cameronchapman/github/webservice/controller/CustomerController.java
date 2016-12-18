@@ -7,11 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -55,7 +51,11 @@ public class CustomerController {
         String responseMsg = null;
         try {
             customer = customerManager.getCustomerById(id);
-            httpStatus = HttpStatus.OK;
+            if (null != customer) {
+                httpStatus = HttpStatus.OK;
+            } else {
+                httpStatus = HttpStatus.NO_CONTENT;
+            }
             responseMsg = SUCCESS;
         } catch(Exception e) {
             httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
@@ -65,7 +65,7 @@ public class CustomerController {
             LOGGER.info("{} | {}", responseMsg, httpStatus.toString());
         }
 
-        return new ResponseEntity<Customer>(customer, HttpStatus.OK);
+        return new ResponseEntity<Customer>(customer, httpStatus);
     }
 
     @RequestMapping(value="customers", method=RequestMethod.POST)
@@ -77,7 +77,7 @@ public class CustomerController {
         try {
             newId = customerManager.insertCustomer(customer);
             response.put("id", newId);
-            httpStatus = HttpStatus.OK;
+            httpStatus = HttpStatus.CREATED;
             responseMsg = SUCCESS;
         } catch(Exception e) {
             httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
@@ -87,7 +87,7 @@ public class CustomerController {
             LOGGER.info("{} | {}", responseMsg, httpStatus.toString());
         }
 
-        return new ResponseEntity<Map<String, Number>>(response, HttpStatus.CREATED);
+        return new ResponseEntity<Map<String, Number>>(response, httpStatus);
     }
 
 }
