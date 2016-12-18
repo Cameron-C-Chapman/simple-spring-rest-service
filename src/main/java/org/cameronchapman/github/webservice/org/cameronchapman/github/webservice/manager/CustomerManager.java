@@ -1,6 +1,7 @@
 package org.cameronchapman.github.webservice.org.cameronchapman.github.webservice.manager;
 
 import org.cameronchapman.github.webservice.data.CustomerDao;
+import org.cameronchapman.github.webservice.exception.NoNewCustomerIdReturnedException;
 import org.cameronchapman.github.webservice.model.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,12 +42,10 @@ public class CustomerManager {
         return customer;
     }
 
-    public Number insertCustomer(Customer customer) {
-        Number newId = null;
-        try {
-            newId = customerDao.insert(customer);
-        } catch(Exception e) {
-            LOGGER.error("Error executing insertCustomer.");
+    public Number insertCustomer(Customer customer) throws Exception {
+        Number newId = customerDao.insert(customer);
+        if (null == newId) {
+            throw new NoNewCustomerIdReturnedException("No new customer id returned.");
         }
         return newId;
     }
