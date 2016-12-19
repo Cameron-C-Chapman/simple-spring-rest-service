@@ -18,6 +18,10 @@ This repo is an example of a simple spring rest service that demonstrates some g
 ```
 
 ### Testing the Application
+* Unit testing
+  ```
+  ./gradlew test
+  ```
 * Through swagger-ui
   * With the application running navigate to [http://localhost:9000/swagger-ui.html](http://localhost:9000/swagger-ui.html)
   * You will see several controllers exposed including the Customer Controller which exposes the functionality for viewing all customers, viewing a specific customer, and adding a customer.

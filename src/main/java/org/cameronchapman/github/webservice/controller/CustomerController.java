@@ -24,6 +24,12 @@ public class CustomerController {
     @Autowired
     CustomerManager customerManager;
 
+    /**
+     * HTTP GET
+     * Return a list of all customers.
+     *
+     * @return  ResponseEntity<List<Customer>>
+     */
     @RequestMapping(value="/customers", method= RequestMethod.GET)
     public ResponseEntity<List<Customer>> getAll() {
         List<Customer> customers = null;
@@ -38,12 +44,20 @@ public class CustomerController {
             responseMsg = FAILED;
             LOGGER.error("Exception calling getAll! msg={}", e.getMessage());
         } finally {
-            LOGGER.info("{} | {}", responseMsg, httpStatus.toString());
+            LOGGER.info("{} | {}", responseMsg, httpStatus.toString()); //@NOTE: logging in a real application should be much more robust than this, this is just an example
         }
 
         return new ResponseEntity<List<Customer>>(customers, httpStatus);
     }
 
+    /**
+     * HTTP GET
+     * Return a specific customer.
+     *
+     * @param   @PathVariable Long    id
+     *
+     * @return  ResponseEntity<Customer>
+     */
     @RequestMapping(value="/customers/{id}", method=RequestMethod.GET)
     public ResponseEntity<Customer> getById(@PathVariable Long id) {
         Customer customer = null;
@@ -68,6 +82,13 @@ public class CustomerController {
         return new ResponseEntity<Customer>(customer, httpStatus);
     }
 
+    /**
+     * HTTP POST
+     * Create a customer.
+     *
+     * @param   @RequestBody Customer   customer
+     * @return  ResponseEntity<Map<String, Number>>
+     */
     @RequestMapping(value="customers", method=RequestMethod.POST)
     public ResponseEntity<Map<String, Number>> insert(@RequestBody Customer customer) {
         Number newId = null;

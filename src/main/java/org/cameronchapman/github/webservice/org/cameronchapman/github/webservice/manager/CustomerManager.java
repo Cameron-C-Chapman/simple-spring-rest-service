@@ -37,6 +37,7 @@ public class CustomerManager {
         try {
             customer = customerDao.getById(id);
         } catch(DataAccessException dae) {
+            // if no data is returned return null to caller
             LOGGER.debug("No data returned from getCustomerById. id={}", id);
         }
         return customer;
@@ -44,6 +45,7 @@ public class CustomerManager {
 
     public Number insertCustomer(Customer customer) throws Exception {
         Number newId = customerDao.insert(customer);
+        // if no new id was generated from the insert attempt throw an exception
         if (null == newId) {
             throw new NoNewCustomerIdReturnedException("No new customer id returned.");
         }
