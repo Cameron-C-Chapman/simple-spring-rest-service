@@ -1,0 +1,27 @@
+spring:
+  profiles: local
+server:
+  port: 9000
+datasource:
+  url: jdbc:h2:mem:simple_spring_rest_service_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=TRUE
+  username: sa
+  password:
+  driver-class-name: org.h2.Driver
+  platform: h2
+---
+
+# configurations for dev, test, prod, etc environments can be added here with different data sources
+# for example:
+# spring:
+#   profiles: dev
+# server:
+#   port: 9001
+# datasource:
+#   url:mysql-db:3306
+# etc...
+
+# this represents a configuration block that is applied to all environments
+daoSql:
+  getAllCustomersSql: "select * from customer order by id asc"
+  getCustomerById: "select * from customer where id=:id"
+  insertCustomerSql: "insert into customer (name, address1, address2, city, state, zip, create_timestamp) values (:name, :address1, :address2, :city, :state, :zip, CURRENT_TIMESTAMP())"
