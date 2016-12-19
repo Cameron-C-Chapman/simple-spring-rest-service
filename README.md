@@ -39,4 +39,9 @@ This repo is an example of a simple spring rest service that demonstrates some g
 * Authentication
   * How authentication needs to be setup is pretty dependent on the way it plans to be used within the environment it is being deployed and the systems it needs to interact with so I left it out of this demo.
 
-
+### Some Things Included With This Demo
+* Continuous Integration
+  * Continuous integration is configured through TravisCI. For more information on TravisCI visit [https://docs.travis-ci.com/](https://docs.travis-ci.com/)
+* Code Coverage Analysis
+  * Code coverage analysis is configured through codecov.io. For more information on codecov.io visit [https://codecov.io/](https://codecov.io/)
+* Interactive documentation through swagger-ui and pre-configured test suites through Postman and Advanced Rest Client.
