@@ -33,7 +33,7 @@ This repo is an example of a simple spring rest service that demonstrates some g
   ```
   /resources/advanced-rest-client/simpleSpringRestService.json
   ```
-  * For more information on Advanced Rest Client visit []https://advancedrestclient.com/(https://advancedrestclient.com/)
+  * For more information on Advanced Rest Client visit [https://advancedrestclient.com/](https://advancedrestclient.com/)
 
 ### Some Things Not Included With This Demo
 * Authentication
