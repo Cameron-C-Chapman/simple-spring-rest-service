@@ -2,8 +2,8 @@ package org.cameronchapman.github.webservice.manager;
 
 import org.cameronchapman.github.webservice.data.CustomerDao;
 import org.cameronchapman.github.webservice.exception.NoNewCustomerIdReturnedException;
+import org.cameronchapman.github.webservice.manager.CustomerManager;
 import org.cameronchapman.github.webservice.model.Customer;
-import org.cameronchapman.github.webservice.org.cameronchapman.github.webservice.manager.CustomerManager;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

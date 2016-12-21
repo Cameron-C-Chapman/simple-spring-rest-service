@@ -1,2 +1,4 @@
 ignore:
   - "src/main/java/org/cameronchapman/github/webservice/config"
+  - "src/main/java/org/cameronchapman/github/webservice/SimpleSpringRestServiceApplication.java"
+  - "src/test/java/**/*"
