@@ -1,7 +1,7 @@
 package org.cameronchapman.github.webservice.controller;
 
+import org.cameronchapman.github.webservice.manager.CustomerManager;
 import org.cameronchapman.github.webservice.model.Customer;
-import org.cameronchapman.github.webservice.org.cameronchapman.github.webservice.manager.CustomerManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

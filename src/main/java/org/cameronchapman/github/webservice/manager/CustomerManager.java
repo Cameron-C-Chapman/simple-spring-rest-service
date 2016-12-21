@@ -1,4 +1,4 @@
-package org.cameronchapman.github.webservice.org.cameronchapman.github.webservice.manager;
+package org.cameronchapman.github.webservice.manager;
 
 import org.cameronchapman.github.webservice.data.CustomerDao;
 import org.cameronchapman.github.webservice.exception.NoNewCustomerIdReturnedException;
