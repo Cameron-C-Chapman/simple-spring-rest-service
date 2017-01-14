@@ -1,5 +1,9 @@
 package org.cameronchapman.github.webservice.data;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.cameronchapman.github.webservice.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,10 +13,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Component
 public class CustomerDao {

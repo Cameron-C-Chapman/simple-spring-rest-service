@@ -1,5 +1,8 @@
 package org.cameronchapman.github.webservice.manager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.cameronchapman.github.webservice.data.CustomerDao;
 import org.cameronchapman.github.webservice.exception.NoNewCustomerIdReturnedException;
 import org.cameronchapman.github.webservice.model.Customer;
@@ -10,11 +13,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Component
-@Transactional(timeout=5)
+@Transactional(timeout = 5, readOnly = true)
 public class CustomerManager {
 
     private static Logger LOGGER = LoggerFactory.getLogger(CustomerManager.class);
@@ -22,7 +22,6 @@ public class CustomerManager {
     @Autowired
     private CustomerDao customerDao;
 
-    @Transactional(readOnly = true)
     public List<Customer> getAll() {
         List<Customer> customers = customerDao.getAll();
         if (null == customers) {
@@ -31,7 +30,6 @@ public class CustomerManager {
         return customers;
     }
 
-    @Transactional(readOnly = true)
     public Customer getCustomerById(Long id) {
         Customer customer = null;
         try {
@@ -43,6 +41,7 @@ public class CustomerManager {
         return customer;
     }
 
+    @Transactional(readOnly = false)
     public Number insertCustomer(Customer customer) throws Exception {
         Number newId = customerDao.insert(customer);
         // if no new id was generated from the insert attempt throw an exception

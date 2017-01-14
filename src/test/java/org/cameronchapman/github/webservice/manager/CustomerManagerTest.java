@@ -1,8 +1,15 @@
 package org.cameronchapman.github.webservice.manager;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.mockito.Matchers.any;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.cameronchapman.github.webservice.data.CustomerDao;
 import org.cameronchapman.github.webservice.exception.NoNewCustomerIdReturnedException;
-import org.cameronchapman.github.webservice.manager.CustomerManager;
 import org.cameronchapman.github.webservice.model.Customer;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,12 +19,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.any;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CustomerManagerTest {
@@ -39,6 +40,8 @@ public class CustomerManagerTest {
         List<Customer> customers = customerManger.getAll();
         assertNotNull(customers);
     }
+    
+    // @TODO add timeout test
 
     @Test
     public void getAllReturnsNullConvertsToEmptyListTest() throws Exception {
