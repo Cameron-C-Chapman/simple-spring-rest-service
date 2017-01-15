@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,7 +44,7 @@ public class CustomerManager {
 
     @Transactional(readOnly = false)
     public Number insertCustomer(Customer customer) throws Exception {
-        Number newId = customerDao.insert(customer);
+        Number newId = customerDao.insert(customer, new GeneratedKeyHolder());
         // if no new id was generated from the insert attempt throw an exception
         if (null == newId) {
             throw new NoNewCustomerIdReturnedException("No new customer id returned.");

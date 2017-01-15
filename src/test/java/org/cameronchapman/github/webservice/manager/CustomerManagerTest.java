@@ -19,6 +19,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CustomerManagerTest {
@@ -66,14 +67,14 @@ public class CustomerManagerTest {
 
     @Test
     public void insertCustomerTest() throws Exception {
-        Mockito.when(mockCustomerDao.insert(any(Customer.class))).thenReturn(99);
+        Mockito.when(mockCustomerDao.insert(any(Customer.class), any(GeneratedKeyHolder.class))).thenReturn(99);
         Number newId = customerManger.insertCustomer(new Customer());
         assertEquals(newId, 99);
     }
 
     @Test(expected = NoNewCustomerIdReturnedException.class)
     public void insertCustomerNullCustomerThrowsCorrectExceptionTest() throws Exception {
-        Mockito.when(mockCustomerDao.insert(any(Customer.class))).thenReturn(null);
+        Mockito.when(mockCustomerDao.insert(any(Customer.class), any(GeneratedKeyHolder.class))).thenReturn(null);
         customerManger.insertCustomer(new Customer());
     }
 

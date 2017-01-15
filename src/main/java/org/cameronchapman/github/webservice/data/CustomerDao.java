@@ -11,7 +11,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -45,8 +44,7 @@ public class CustomerDao {
         return namedParameterJdbcTemplate.queryForObject(getCustomerById, param, customerRowMapper);
     }
 
-    public Number insert(Customer customer) {
-        KeyHolder keyHolder = new GeneratedKeyHolder();
+    public Number insert(Customer customer, GeneratedKeyHolder keyHolder) {
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("name", customer.getName());
         params.addValue("address1", customer.getAddress1());
