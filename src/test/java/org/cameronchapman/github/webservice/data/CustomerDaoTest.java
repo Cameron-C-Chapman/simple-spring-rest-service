@@ -70,7 +70,6 @@ public class CustomerDaoTest {
     	Mockito.when(namedParameterJdbcTemplate.update(any(String.class), any(MapSqlParameterSource.class), any(KeyHolder.class))).thenReturn(99);
     	Mockito.when(keyHolder.getKey()).thenReturn(99);
     	Number insertedId = customerDao.insert(customer, keyHolder);
-    	System.out.println(insertedId);
     	assertEquals(insertedId, 99);
     }
     
