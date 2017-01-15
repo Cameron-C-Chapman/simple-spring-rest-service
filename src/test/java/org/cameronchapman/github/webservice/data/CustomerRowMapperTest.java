@@ -14,17 +14,17 @@ import org.mockito.runners.MockitoJUnitRunner;
 public class CustomerRowMapperTest {
     
 	@Test
-	public void mapRowTest() throws Exception {
+	public void customerRowMapperTest() throws Exception {
 		CustomerRowMapper customerRowMapper = new CustomerRowMapper();
-		ResultSet rs = Mockito.mock(ResultSet.class);
 		Long id = new Long(1);
+		ResultSet rs = Mockito.mock(ResultSet.class);
 		Mockito.when(rs.getLong("id")).thenReturn(id);
 		Mockito.when(rs.getString("name")).thenReturn("Customer Name");
 		Mockito.when(rs.getString("address1")).thenReturn("Address 1");
 		Mockito.when(rs.getString("address2")).thenReturn("Address 2");
 		Mockito.when(rs.getString("city")).thenReturn("City");
 		Mockito.when(rs.getString("state")).thenReturn("State");
-		Mockito.when(rs.getString("zip")).thenReturn("Zip");
+		Mockito.when(rs.getString("zip")).thenReturn("Zip");		
 		Customer customer = customerRowMapper.mapRow(rs, 1);
 		assertEquals(customer.getId(), id);
 		assertEquals(customer.getName(), "Customer Name");
@@ -34,4 +34,5 @@ public class CustomerRowMapperTest {
 		assertEquals(customer.getState(), "State");
 		assertEquals(customer.getZip(), "Zip");
 	}
+	
 }
