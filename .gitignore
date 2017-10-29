@@ -4,6 +4,9 @@ build/
 .classpath
 .project
 .settings/
+*.iml
+.DS_Store
+
 
 # Ignore Gradle GUI config
 gradle-app.setting
